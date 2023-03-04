@@ -10,37 +10,44 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button color="warning" size="block" fill="outline">
+        <ion-item color = "medium">
+          <h4>Valendo: {{valendo}}</h4>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="warning" size="block" fill="outline" (click)="resetarValendo()">
           <h5>1</h5>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" size="block" fill="outline">
+        <ion-button color="warning" size="block" fill="outline" (click)="chamarTruco()">
           <h5>3</h5>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" size="block" fill="outline">
+        <ion-button color="warning" size="block" fill="outline" (click)="chamarTruco6()">
           <h5>6</h5>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" size="block" fill="outline">
+        <ion-button color="warning" size="block" fill="outline" (click)="chamarTruco9()">
           <h5>9</h5>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" size="block" fill="outline">
+        <ion-button color="warning" size="block" fill="outline" (click)="chamarTruco12()">
           <h5>12</h5>
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
+    <ion-row class="ion-justify-content-around">
       <ion-col size="3">
         <h2>
           Time 1
         </h2>
-        <ion-button color="warning" size="large">
+        <ion-button color="warning" size="large" (click)="adicionarPontosTime1()">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
@@ -48,26 +55,48 @@
         <h2>
           Time 2
         </h2>
-        <ion-button color="warning" size="large">
+        <ion-button color="warning" size="large" (click)="adicionarPontosTime2()">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
+    <ion-row class="ion-justify-content-around">
       <ion-col size="3">
-        <h2>
-          Time 1
-        </h2>
-        <ion-button color="warning" size="large">
+        <h1>{{pontosTime1}}</h1>
+        <ion-button color="warning" size="large" (click)="removerPontosTime1()">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col size="3" padding="2">
-        <h2>
-          Time 2
-        </h2>
-        <ion-button color="warning" size="large">
+        <h1>{{pontosTime2}}</h1>
+        <ion-button color="warning" size="large" (click)="removerPontosTime2()">
           <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <h3>Partidas</h3>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item color = "medium">
+          <h4>TIME 1:</h4>
+          <ion-badge slot="end" color = "warning">{{partidasTime1}}</ion-badge>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item color = "medium">
+          <h4>TIME 2:</h4>
+          <ion-badge slot="end" color = "warning">{{partidasTime2}}</ion-badge>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="block" color ="warning" (click)="zerar()">
+          <h5>Zerar</h5>
         </ion-button>
       </ion-col>
     </ion-row>
