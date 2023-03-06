@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col>
         <ion-item color = "medium">
-          <h4>Valendo: {{valendo}}</h4>
+          <h4 class="ion-text-center">Valendo: {{valendo}}</h4>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -62,25 +62,25 @@
     </ion-row>
     <ion-row class="ion-justify-content-around">
       <ion-col size="3">
-        <h1>{{pontosTime1}}</h1>
+        <h1 class="ion-padding-start">{{pontosTime1}}</h1>
         <ion-button color="warning" size="large" (click)="removerPontosTime1()">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col size="3" padding="2">
-        <h1>{{pontosTime2}}</h1>
+        <h1 class="ion-padding-start">{{pontosTime2}}</h1>
         <ion-button color="warning" size="large" (click)="removerPontosTime2()">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
-      <h3>Partidas</h3>
+      <h5>Partidas</h5>
     </ion-row>
-    <ion-row>
+    <ion-row size="">
       <ion-col>
         <ion-item color = "medium">
-          <h4>TIME 1:</h4>
+          <h5>TIME 1:</h5>
           <ion-badge slot="end" color = "warning">{{partidasTime1}}</ion-badge>
         </ion-item>
       </ion-col>
@@ -88,7 +88,7 @@
     <ion-row>
       <ion-col>
         <ion-item color = "medium">
-          <h4>TIME 2:</h4>
+          <h5>TIME 2:</h5>
           <ion-badge slot="end" color = "warning">{{partidasTime2}}</ion-badge>
         </ion-item>
       </ion-col>

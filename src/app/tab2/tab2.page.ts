@@ -14,7 +14,7 @@ export class Tab2Page {
   partidasTime1 = 0;
   partidasTime2 = 0;
 
-  constructor(private alertaVitoria: AlertController) {}
+  constructor(private alertas: AlertController) {}
 
   resetarValendo(){
     this.valendo = 1;
@@ -35,22 +35,19 @@ export class Tab2Page {
 
   adicionarPontosTime1(){
     this.pontosTime1 = this.pontosTime1 + this.valendo;
-    this.valendo = 1;
     if (this.pontosTime1 >= 12){
-      this.alertaVit1();
-      this.partidasTime1 = this.partidasTime1 + 1;
-      this.pontosTime1 = 0;
-      this.pontosTime2 = 0;
+      this.alertaVit1()
+    }else{
+      this.valendo = 1;
     }
+
   }
   adicionarPontosTime2(){
     this.pontosTime2 = this.pontosTime2 + this.valendo;
-    this.valendo = 1;
-    if (this.pontosTime2 >= 12){
-      this.alertaVit2();
-      this.partidasTime2 = this.partidasTime2 + 1;
-      this.pontosTime1 = 0;
-      this.pontosTime2 = 0;
+    if(this.pontosTime2 >= 12){
+      this.alertaVit2()
+    }else{
+      this.valendo = 1;
     }
   }
 
@@ -72,38 +69,89 @@ export class Tab2Page {
   }
 
   zerar(){
-    this.valendo = 1;
-    this.pontosTime1 = 0;
-    this.pontosTime2 = 0;
-    this.partidasTime1 = 0;
-    this.partidasTime2 = 0;
+    this.zerarAlerta();
   }
+
   async alertaVit1() {
-    const alert = await this.alertaVitoria.create({
-      header: 'Alert',
-      subHeader: 'Important message',
-      message: 'This is an alert!',
-      buttons: ['OK'],
-    });
-
-    await alert.present();
-
-  }
-  async alertaVit2() {
-    const alert = await this.alertaVitoria.create({
+    const alert = await this.alertas.create({
       header: 'Vitoria?',
-      message: 'O Time 2 Realmente ganhou?',
+      message: 'O Time 1 Realmente ganhou?',
       buttons: [{
         text: 'NÃO',
-        role: 'CANCEL'
+        role: 'CANCEL',
+        handler: () => {
+          this.pontosTime1 = this.pontosTime1 - this.valendo;
+          this.valendo = 1;
+        }
       },{
         text: 'SIM',
-        role: 'confirm'
+        role: 'confirm',
+        handler: () => {
+          this.partidasTime1 = this.partidasTime1 + 1;
+          this.pontosTime1 = 0;
+          this.pontosTime2 = 0;
+          this.valendo = 1;
+        }
       }],
     });
 
     await alert.present();
 
+  }
+
+  async alertaVit2() {
+    const alert = await this.alertas.create({
+      header: 'Vitoria?',
+      message: 'O Time 2 Realmente ganhou?',
+      buttons: [{
+        text: 'NÃO',
+        role: 'cancel',
+        handler: () => {
+          this.pontosTime2 = this.pontosTime2 - this.valendo;
+          this.valendo = 1;
+        }
+      },{
+        text: 'SIM',
+        role: 'confirm',
+        handler: () => {
+          this.partidasTime2 = this.partidasTime2 + 1;
+          this.pontosTime1 = 0;
+          this.pontosTime2 = 0;
+          this.valendo = 1;
+        }
+      }]
+    });
+
+    await alert.present();
+
+  }
+
+  async zerarAlerta() {
+    const alert = await this.alertas.create({
+      header: 'Tem certeza?',
+      message: 'Deseja zerar todos os pontos?',
+      buttons: [{
+        text: 'NÃO',
+        role: 'cancel'
+      },{
+        text: 'SIM',
+        role: 'confirm',
+        handler: () => {
+          this.valendo = 1;
+          this.pontosTime1 = 0;
+          this.pontosTime2 = 0;
+          this.partidasTime1 = 0;
+          this.partidasTime2 = 0;
+        }
+      }]
+    });
+
+    await alert.present();
+
+  }
+
+  corBotao(){
+    
   }
 
 }
