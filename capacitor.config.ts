@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'pru-churras',
+  appId: 'oliveira.lucas.pruchurras',
+  appName: 'Pru Churras',
   webDir: 'www',
   bundledWebRuntime: false
 };
